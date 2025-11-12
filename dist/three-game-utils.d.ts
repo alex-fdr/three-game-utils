@@ -6,6 +6,11 @@ export declare function applyTransform(target: Object3D, props?: TransformProps)
 
 export declare function getObjectSize(target: Object3D): Vector3;
 
+export declare function getScreenSize(base?: number): {
+    width: number;
+    height: number;
+};
+
 export declare function throttleTrailing(callback: Function, limit: number): (...args: any[]) => void;
 
 export declare interface TransformProps {

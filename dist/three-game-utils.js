@@ -1,37 +1,48 @@
-import { Box3 as l, Vector3 as f } from "three";
-function p(t, n = {}) {
-  const { position: o, rotation: e, scale: i, scaleFactor: r } = n;
-  if (o) {
-    const { x: s = 0, y: c = 0, z: a = 0 } = o;
-    t.position.set(s, c, a);
-  }
+import { Box3 as u, Vector3 as f } from "three";
+function w(t, n = {}) {
+  const { position: e, rotation: o, scale: i, scaleFactor: a } = n;
   if (e) {
-    const { x: s = 0, y: c = 0, z: a = 0 } = e;
-    t.rotation.set(s, c, a);
+    const { x: c = 0, y: s = 0, z: r = 0 } = e;
+    t.position.set(c, s, r);
+  }
+  if (o) {
+    const { x: c = 0, y: s = 0, z: r = 0 } = o;
+    t.rotation.set(c, s, r);
   }
   if (i) {
-    const { x: s = 1, y: c = 1, z: a = 1 } = i;
-    t.scale.set(s, c, a);
+    const { x: c = 1, y: s = 1, z: r = 1 } = i;
+    t.scale.set(c, s, r);
   }
-  r && t.scale.multiplyScalar(r);
+  a && t.scale.multiplyScalar(a);
 }
-function m(t) {
-  const n = new l().setFromObject(t), o = new f();
-  return n.getSize(o), o;
+function h(t) {
+  const n = new u().setFromObject(t), e = new f();
+  return n.getSize(e), e;
 }
-function w(t, n) {
-  let o, e;
+function p(t = 1024) {
+  const n = window.innerWidth / window.innerHeight;
+  return n > 1 ? {
+    width: t,
+    height: Math.round(t / n)
+  } : {
+    width: Math.round(t * n),
+    height: t
+  };
+}
+function d(t, n) {
+  let e, o;
   return (...i) => {
-    e ? (clearTimeout(o), o = setTimeout(
+    o ? (clearTimeout(e), e = setTimeout(
       () => {
-        Date.now() - e >= n && (t(...i), e = Date.now());
+        Date.now() - o >= n && (t(...i), o = Date.now());
       },
-      n - (Date.now() - e)
-    )) : (t(...i), e = Date.now());
+      n - (Date.now() - o)
+    )) : (t(...i), o = Date.now());
   };
 }
 export {
-  p as applyTransform,
-  m as getObjectSize,
-  w as throttleTrailing
+  w as applyTransform,
+  h as getObjectSize,
+  p as getScreenSize,
+  d as throttleTrailing
 };
