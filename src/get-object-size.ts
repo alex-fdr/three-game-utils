@@ -1,4 +1,4 @@
-import { Box3, Object3D, Vector3 } from 'three';
+import { Box3, Vector3, type Object3D } from 'three';
 
 export function getObjectSize(target: Object3D) {
     const box = new Box3().setFromObject(target);
