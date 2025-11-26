@@ -4,6 +4,8 @@ import { Vector3Like } from 'three';
 
 export declare function applyTransform(target: Object3D, props?: TransformProps): void;
 
+export declare function deepMerge(target: any, source: any): any;
+
 export declare function getObjectSize(target: Object3D): Vector3;
 
 export declare function getScreenSize(base?: number): {
